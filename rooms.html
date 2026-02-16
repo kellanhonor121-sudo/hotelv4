@@ -625,29 +625,32 @@
         });
         async function getPriceFromSheet() {
             const sheetId = '1IVsdSelYH8eH6rLLIDp5B9JddVMBH0NxDaMPD2IBTJM';
-            // Veriyi daha temiz bir formatta almak için 'tq' parametresini güncelledik
-            const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&sheet=Sheet1`; 
-
+            const sheetName = 'Sheet1';
+            
+            // A3 hücresini hedefleyen özel sorgu (Select A)
+            const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&sheet=${sheetName}&range=A3:A3`;
+        
             try {
                 const response = await fetch(url);
                 const text = await response.text();
                 
-                // Google JSON yanıtı "/*-google-javascript-*/" ile başlar, bunu temizliyoruz
+                // Google'ın JSON formatındaki koruyucu metni temizleme
                 const jsonData = JSON.parse(text.substring(47).slice(0, -2));
                 
-                // A3 hücresine erişim (Satır 3 -> index 2, Sütun A -> index 0)
-                const row = jsonData.table.rows[2];
-                if (row && row.c[0]) {
-                    const price = row.c[0].v; // v = value (değer)
+                // Veriyi çekme
+                if (jsonData.table.rows.length > 0 && jsonData.table.rows[0].c[0]) {
+                    const price = jsonData.table.rows[0].c[0].v;
                     document.getElementById('price-loader').innerText = price;
                 } else {
-                    document.getElementById('price-loader').innerText = "Veri Yok";
+                    document.getElementById('price-loader').innerText = "Hücre Boş";
                 }
             } catch (error) {
                 console.error('Bağlantı Hatası:', error);
-                document.getElementById('price-loader').innerText = "Bağlantı Hatası";
+                document.getElementById('price-loader').innerText = "Hata!";
             }
         }
+
+getPriceFromSheet();
 
         getPriceFromSheet();
     </script>
