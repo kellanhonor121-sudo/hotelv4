@@ -379,6 +379,11 @@
             color: var(--gold);
             margin-bottom: 5px;
         }
+        #price-loader {
+            color: var(--gold) !important;
+            font-family: 'Playfair Display', serif !important;
+            font-weight: 600 !important;
+        }
 
         .price-note {
             font-size: 0.85rem;
@@ -736,7 +741,9 @@
             <div class="booking-card">
                 <div class="price-section">
                     <div class="price-label">Gecelik Fiyat</div>
-                    <div class="price-amount">2.500 ₺</div>
+                    <div class="price-amount">
+                        <span id="price-loader">...</span> ₺
+                    </div>
                     <div class="price-note">KDV Dahil</div>
                 </div>
 
@@ -806,6 +813,33 @@
                 }
             });
         });
+        <script>
+        async function getPriceFromSheet() {
+            const sheetId = '1IVsdSelYH8eH6rLLIDp5B9JddVMBH0NxDaMPD2IBTJM';
+            const sheetName = 'Sheet1';
+            
+            // A3 hücresini çeker
+            const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&sheet=${sheetName}&range=A3:A3`;
+    
+            try {
+                const response = await fetch(url);
+                const text = await response.text();
+                const jsonData = JSON.parse(text.substring(47).slice(0, -2));
+                
+                if (jsonData.table.rows.length > 0 && jsonData.table.rows[0].c[0]) {
+                    const price = jsonData.table.rows[0].c[0].v;
+                    // Fiyatı ve nokta formatını basar
+                    document.getElementById('price-loader').innerText = Number(price).toLocaleString('tr-TR');
+                } else {
+                    document.getElementById('price-loader').innerText = "Sorunuz";
+                }
+            } catch (error) {
+                console.error('Fiyat hatası:', error);
+            }
+        }
+    
+        getPriceFromSheet();
+
     </script>
 </body>
 </html>
