@@ -496,124 +496,71 @@
             transform: scale(1.15);
             box-shadow: 0 8px 35px rgba(37, 211, 102, 0.6);
         }
-
-        /* RESPONSIVE */
+        
+        /* ROOMS HTML RESPONSIVE - GÜNCELLENMİŞ */
         @media (max-width: 1024px) {
-            nav {
-                padding: 20px 4%;
-            }
-
-            .gallery-section {
-                padding: 40px 4%;
-            }
-
+            nav { padding: 20px 4%; }
+            .gallery-section { padding: 40px 4%; }
             .room-details {
                 padding: 60px 4%;
                 grid-template-columns: 1fr;
                 gap: 40px;
             }
-
-            .booking-card {
-                position: relative;
-                top: 0;
-            }
+            .booking-card { position: relative; top: 0; }
         }
-
+        
         @media (max-width: 768px) {
-            nav {
-                padding: 20px 4%;
+            nav { padding: 15px 4%; }
+            .nav-links { 
+                gap: 12px; 
+                flex-wrap: wrap; 
+                justify-content: center; 
             }
-
-            .logo {
-                font-size: 1.5rem;
-            }
-
-            .nav-links {
-                gap: 20px;
-            }
-
-            .nav-links a {
-                font-size: 0.85rem;
-            }
-
-            .gallery-section {
-                padding: 30px 4%;
-            }
-
+            .nav-links a { font-size: 0.75rem; }
+            .logo { font-size: 1.3rem; }
+        
             .gallery-container {
                 grid-template-columns: 1fr;
                 height: auto;
-                gap: 15px;
-            }
-
-            .main-image {
-                height: 350px;
-            }
-
-            .thumbnail-grid {
-                grid-template-columns: repeat(5, 1fr);
                 gap: 10px;
             }
-
-            .thumbnail {
-                height: 80px;
+            .main-image { height: 280px; } /* Mobilde ana resim çok devasa olmasın */
+            
+            .thumbnail-grid {
+                grid-template-columns: repeat(4, 1fr); /* 5 tane çok sıkışık durabilir, 4 daha iyi */
+                gap: 8px;
             }
-
-            .room-details {
-                padding: 50px 4%;
-                gap: 40px;
-            }
-
-            .room-title {
-                font-size: 2.5rem;
-            }
-
-            .room-meta {
-                gap: 15px;
-            }
-
-            .section-block {
-                padding: 30px 25px;
-            }
-
-            .section-block h3 {
-                font-size: 1.6rem;
-            }
-
-            .amenities-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .booking-card {
-                padding: 30px;
-            }
-
-            .price-amount {
-                font-size: 2.5rem;
-            }
-
-            footer {
-                padding: 40px 4% 20px;
-            }
-
-            .whatsapp-float {
-                width: 50px;
-                height: 50px;
-                font-size: 1.5rem;
-                bottom: 20px;
-                right: 20px;
-            }
+        
+            .room-title { font-size: 1.8rem; } /* Kesilmeyi önlemek için küçülttük */
+            .price-amount { font-size: 2rem; }
+            
+            .amenities-grid { grid-template-columns: 1fr; }
+            
+            .section-block { padding: 25px 20px; }
+            .section-block h3 { font-size: 1.4rem; }
         }
-
+        
         @media (max-width: 480px) {
-            .room-title {
-                font-size: 2rem;
+            .room-title { 
+                font-size: 1.5rem; 
+                word-wrap: break-word; /* Başlığın taşmasını kesin engeller */
             }
-            .price-amount {
-                font-size: 2rem;
+            
+            .main-image { height: 220px; } /* Küçük ekranlarda ideal yükseklik */
+            
+            .thumbnail-grid {
+                grid-template-columns: repeat(3, 1fr); /* Çok küçük ekranda 3'lü dizilim */
             }
-            .section-block h3 {
-                font-size: 1.4rem;
+        
+            .price-amount { font-size: 1.8rem; }
+            
+            .section-block h3 { font-size: 1.2rem; }
+            
+            /* WhatsApp butonunu biraz küçültelim parmak kaplamasın */
+            .whatsapp-float {
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
             }
         }
     </style>
