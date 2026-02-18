@@ -431,100 +431,63 @@
             box-shadow: 0 8px 35px rgba(37, 211, 102, 0.6);
         }
 
-        /* RESPONSIVE */
+                /* ROOM LIST RESPONSIVE - GÜNCELLENMİŞ */
         @media (max-width: 1024px) {
-            nav {
-                padding: 20px 4%;
-            }
-            .room-card {
-                grid-template-columns: 1fr;
-            }
-            .room-image {
-                height: 350px;
-            }
+            nav { padding: 20px 4%; }
+            .room-card { grid-template-columns: 1fr; }
+            .room-image { height: 350px; }
         }
-
+        
         @media (max-width: 768px) {
-            nav {
-                padding: 20px 4%;
+            nav { padding: 15px 4%; }
+            .nav-links { 
+                gap: 12px; 
+                flex-wrap: wrap; 
+                justify-content: center; 
             }
-
-            .logo {
-                font-size: 1.5rem;
+            .nav-links a { font-size: 0.75rem; }
+            
+            .page-header { padding: 60px 4% 40px; }
+            .page-header h1 { font-size: 2.2rem; }
+            
+            .rooms-container { padding: 40px 4%; }
+            
+            .room-image { height: 250px; } /* Mobilde çok yer kaplamasın */
+            .room-content { padding: 20px; }
+            
+            .room-title { font-size: 1.6rem; }
+            .room-price { font-size: 1.5rem; }
+            
+            /* Butonları dikey yaparken tam genişlik veriyoruz */
+            .room-actions { 
+                flex-direction: column; 
+                gap: 10px; 
             }
-
-            .nav-links {
-                gap: 20px;
-            }
-
-            .nav-links a {
-                font-size: 0.85rem;
-            }
-
-            .page-header {
-                padding: 80px 4% 60px;
-            }
-
-            .page-header h1 {
-                font-size: 2.5rem;
-            }
-
-            .page-subtitle {
-                font-size: 1rem;
-            }
-
-            .rooms-container {
-                padding: 60px 4%;
-            }
-
-            .room-card {
-                margin-bottom: 40px;
-            }
-
-            .room-image {
-                height: 300px;
-            }
-
-            .room-content {
-                padding: 30px;
-            }
-
-            .room-title {
-                font-size: 2rem;
-            }
-
-            .room-meta {
-                gap: 15px;
-            }
-
-            .room-price {
-                font-size: 1.8rem;
-            }
-
-            .room-actions {
-                flex-direction: column;
-            }
-
-            footer {
-                padding: 40px 4% 20px;
-            }
-
-            .whatsapp-float {
-                width: 50px;
-                height: 50px;
-                font-size: 1.5rem;
-                bottom: 20px;
-                right: 20px;
+            .room-actions .cta-button { 
+                width: 100%; 
+                text-align: center; 
+                padding: 12px; 
             }
         }
-
+        
         @media (max-width: 480px) {
-            .page-header h1 {
-                font-size: 2rem;
+            .page-header h1 { 
+                font-size: 1.8rem; 
+                word-wrap: break-word; 
             }
-            .room-title {
-                font-size: 1.8rem;
+            
+            .room-title { 
+                font-size: 1.4rem; 
+                word-wrap: break-word; 
             }
+            
+            .room-meta { 
+                flex-direction: column; /* İkonlar alt alta gelsin ki sıkışmasın */
+                align-items: flex-start;
+                gap: 8px;
+            }
+            
+            .room-image { height: 200px; }
         }
     </style>
 </head>
